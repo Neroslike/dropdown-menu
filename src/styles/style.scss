@@ -1,0 +1,91 @@
+@use "./index";
+
+$title-font-size: calc(0.4vw + 1rem);
+$item-font-size: calc(0.4vw + 0.5rem);
+$title-padding: calc(0.2vw + 0.2rem) calc(0.4vw + 0.5rem);
+$arrow-padding: 0 calc(0.2vw + 0.2rem);
+
+// Main dropdown container
+.nl-dropdown {
+  /* Set the dropdown background, this is the color that the arrow
+  icon background will show */
+  background-color: hsla(195, 100, 7, 1);
+  font-family: "Noto Sans", sans-serif;
+  width: max-content;
+  overflow: hidden;
+  color: white;
+  // border: 1px solid gray;
+  user-select: none;
+  cursor: pointer;
+  color: #000036;
+  fill: hsla(0, 0%, 93%, 1);
+
+  // Dropdown name
+  .nl-dropdown-title {
+    font-weight: 800;
+    font-size: $title-font-size;
+    margin: 0;
+    padding: 0;
+    // This property sets the background behind the dropdown title
+    background-color: hsla(187, 61, 74, 1);
+
+    padding: $title-padding;
+  }
+
+  // This class contains the options of the dropdown menu
+  .nl-dropdown-options {
+    list-style: none;
+    background-color: hsla(195, 100, 7, 1);
+    margin: 0;
+    max-height: 0;
+    transition: max-height 0.2s ease-in-out, padding 0.2s;
+    padding: 0;
+
+    .nl-dropdown-item {
+      padding: 0.3rem 1rem;
+      &:hover {
+        background-color: white;
+        & > * {
+          color: hsla(240, 100%, 11%, 1);
+        }
+      }
+      & > * {
+        color: hsla(0, 0%, 93%, 1);
+        text-decoration: none;
+        font-size: $item-font-size;
+      }
+    }
+  }
+
+  .nl-arrow-icon {
+    height: $title-font-size;
+    width: $title-font-size;
+    padding: $arrow-padding;
+    transition: transform 0.2s;
+  }
+
+  // Wrapper for the title and angle icon
+  .nl-dropdown-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Add this class to make the dropdown rounded
+.nl-dropdown.rounded {
+  border-radius: calc(0.5vw + 0.6rem);
+}
+
+.nl-dropdown:hover {
+  .nl-dropdown-options {
+    max-height: 500px;
+    transition: max-height 0.2s ease-in, padding 0.2s;
+    padding: 0;
+  }
+
+  .nl-arrow-icon {
+    transform: rotate(-0.25turn);
+    transition: transform 0.2s;
+  }
+}
